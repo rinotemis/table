@@ -22,10 +22,6 @@ app.get("/table", (req, res) => {
   });
 });
 
-app.get("/new", (req, res) => {
-  res.render("new.ejs");
-});
-
 app.post("/create", (req, res) => {
   connection.query(
     "insert into test (name) value(?);",
