@@ -1,0 +1,1 @@
+insert into demo.test (id,name) value((select * from(select max(id) +1 from demo.test)as tmp),'hoge');

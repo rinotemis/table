@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>new</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  </head>
+  <body class="is-slide" id="page-animate">
+    <header>
+      <a href="/">R System Design</a>
+    </header>
+    <h2>買い物リスト</h2>
+    <form action="/create" method="post">
+      <input type="text" name="itemName" />
+      <input type="submit" value="add" />
+    </form>
+    <a href="/table">戻る</a>
+    <script>
+      $(window).on("load", function () {
+        $("body").removeClass("is-slide");
+      });
+
+      $(function () {
+        // ハッシュリンク(#)と別ウィンドウでページを開く場合は実行しない
+
+        $('a:not([href^="#"]):not([target])').on("click", function (e) {
+          e.preventDefault(); // ページ遷移を一旦キャンセル
+          url = $(this).attr("href"); // 遷移先のURLを取得
+
+          if (url !== "") {
+            $("body").addClass("is-slide-in"); // 画面遷移前のアニメーション is-slide-in
+
+            setTimeout(function () {
+              window.location = url; // 0.7秒後に取得したURLに遷移
+            }, 10);
+          }
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>

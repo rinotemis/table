@@ -1,0 +1,276 @@
+/* text */
+html {
+  font-size: 100%;
+  font-family: "Hiragino Sans", sans-serif;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+
+body {
+  margin: 100;
+  background-color: rgb(34, 36, 38);
+  color: #f0f0f0;
+}
+/* h */
+h1 {
+  position: relative;
+  padding: 1rem 0.5rem;
+  width: 45%;
+}
+
+h1:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  content: "";
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#fc2163),
+    to(#fee140)
+  );
+  background-image: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+
+h1:first-letter {
+  font-size: 150%;
+  color: #eb6100;
+}
+
+h2 {
+  position: relative;
+  padding: 1rem 0.5rem;
+  background-color: #1b2440;
+}
+
+h2:before,
+h2:after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  content: "";
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(#30cfd0),
+    to(#330867)
+  );
+  background-image: -webkit-linear-gradient(right, #30cfd0 0%, #330867 100%);
+  background-image: linear-gradient(to left, #30cfd0 0%, #330867 100%);
+}
+
+h2:before {
+  top: 0;
+}
+
+h2:after {
+  bottom: 0;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* a */
+a {
+  display: inline-block;
+  font-size: 15pt; /* 文字サイズ */
+  text-align: left; /* 文字位置   */
+  text-decoration: none;
+  width: 34%;
+
+  cursor: pointer; /* カーソル   */
+  padding: 30px 100px; /* 余白       */
+  background-color: rgb(34, 42, 49);
+  color: rgba(255, 255, 255, 0.95); /* 文字色     */
+  line-height: 1em; /* 1行の高さ  */
+  transition: all 0.7s; /* なめらか変化 */
+  /*box-shadow    : 11px 11px 11px #302f2f;   影の設定 */
+  border: 2px solid rgb(646770); /* 枠の指定 */
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#292929),
+    to(#464255)
+  );
+}
+
+a:link {
+  color: lightpink;
+}
+a:visited {
+  color: rgb(53, 139, 89);
+}
+a:hover {
+  color: goldenrod;
+}
+
+/* button */
+button {
+  display: inline-block;
+  width: 200px;
+  height: 54px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 54px;
+  outline: none;
+  font-size: 20px;
+  font-family: "Hiragino Sans", sans-serif;
+
+  position: relative;
+  z-index: 2;
+  background-color: #2d2f34;
+  border: 2px solid #333;
+  color: #fff;
+  line-height: 30px;
+}
+button:hover {
+  background-color: rgb(65, 65, 65);
+  border-color: #333;
+  color: #ffffff;
+}
+button::before,
+button::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: "";
+
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #333;
+}
+button::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+
+  right: 0;
+}
+button::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+
+  left: 0;
+}
+button:hover::before,
+button:hover::after {
+  width: 0;
+  background-color: #464646;
+}
+
+/* hello */
+
+.anim-box.slidein.is-animated {
+  animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+}
+
+#page-animate::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(34, 36, 38);
+  z-index: 9999;
+  pointer-events: none;
+  right: 100%;
+  -webkit-transition: right 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#page-animate::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(34, 36, 38);
+  z-index: 9999;
+  pointer-events: none;
+  left: 100%;
+  -webkit-transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#page-animate.is-slide-in::before {
+  right: 0;
+}
+
+#page-animate.is-slide::after {
+  left: 0;
+}
+/* table  ------------------------------------------------ */
+table {
+  width: 40%;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-bottom: solid 2px #f0f0f0;
+}
+
+.tableId {
+  width: 1%;
+}
+
+table tr:last-child {
+  border-bottom: none;
+}
+
+table th {
+  position: relative;
+  text-align: left;
+  background-color: #308080;
+
+  text-align: center;
+  padding: 10px 0;
+}
+
+table td {
+  text-align: left;
+  text-align: center;
+  background-color: rgb(39, 41, 45);
+  padding: 10px 0;
+}
+
+.itemName {
+  width: 70%;
+  cursor: pointer;
+}
+
+#deleteBtn{
+  width: 100%;
+  height: auto;
+  font-size: 80%;
+}
+
+.addItem{
+  box-sizing    : border-box;
+  margin        : 0;
+  vertical-align: top;
+
+  height        : 47px;                /* 入力域の高さ   */
+  background    : #464646;             /* 入力域の背景色 */
+  border        : 2px solid #1e6bb9;   /* 入力域の枠線   */
+  border-radius : 4px;                 /* 入力域の角丸   */
+  padding       : 0 10px;              /* 入力文字の余白 */
+  font-size     : 26px;                /* 入力文字サイズ */
+  color         : #f0f0f0;             /* 入力文字の色   */
+  font-weight   : bold;                /* 入力文字の太字 */
+  letter-spacing: .1em;                /* 入力文字の間隔 */
+}

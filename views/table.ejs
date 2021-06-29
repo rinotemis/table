@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>table</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="is-slide" id="page-animate">
+    <header>
+      <a href="/">R System Design</a>
+    </header>
+    <h2>買い物リスト</h2>
+    <input type="checkbox" name="sel" value="checker" />確認
+    <table class="tableArea" id="makeImg" align="center">
+      <tr>
+        <th class="tableId">
+          <span></span>
+        </th>
+        <th>
+          <span>買うもの</span>
+        </th>
+        <th></th>
+      </tr>
+      <% for(let i in items){ %>
+      <tr id="itemNames">
+        <% let item = items[i]; %>
+        <form name="del" action="/delete" method="post">
+          <td name="id">
+            <input type="hidden" name="id" value=" <%= item.id %> " />
+          </td>
+          <td class="itemName"><%= item.name %></td>
+          <td class="deleteColumn">
+            <button id="deleteBtn">削除</button>
+          </td>
+        </form>
+      </tr>
+      <% } %>
+      <tr>
+        <td></td>
+      </tr>
+      <tr class="add">
+        <form name="add" action="/create" method="post">
+          <td>・</td>
+          <td>
+            <input name="itemName" />
+          </td>
+          <td>
+            <button id="addBth">追加</button>
+          </td>
+        </form>
+      </tr>
+    </table>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      $(window).on("load", function () {
+        $("body").removeClass("is-slide");
+      });
+
+      $(function () {
+        // ハッシュリンク(#)と別ウィンドウでページを開く場合は実行しない
+
+        $('a:not([href^="#"]):not([target])').on("click", function (e) {
+          e.preventDefault(); // ページ遷移を一旦キャンセル
+          url = $(this).attr("href"); // 遷移先のURLを取得
+
+          if (url !== "") {
+            $("body").addClass("is-slide-in"); // 画面遷移前のアニメーション is-slide-in
+
+            setTimeout(function () {
+              window.location = url; // 0.7秒後に取得したURLに遷移
+            }, 10);
+          }
+          return false;
+        });
+        $("#newBtn").click(function () {
+          location.href = "/new";
+        });
+        $("#itemId").click(function () {
+          alert("id test");
+        });
+
+        $("form").submit(function () {
+          var selectItem = $(this).closest("tr").children("td")[1].innerText;
+          var btnName = $(this).closest("tr").children("td")[2].innerText;
+          if (selectItem == "") {
+            selectItem = $(this).closest("tr").find("input").val();
+          }
+          const elements = document.getElementsByName("sel");
+          console.log(elements[0].value);
+          if (elements[0].checked) {
+            if (
+              !confirm(selectItem + " を" + btnName + "してもよろしいですか?")
+            ) {
+              return false;
+            }
+          } else {
+            elements[0].remove();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
