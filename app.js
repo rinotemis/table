@@ -7,9 +7,9 @@ app.use(express.urlencoded({ extended: false }));
 
 const connection = mysql.createPool({
   host: "us-cdbr-east-04.cleardb.com",
-  user: "ba2c04792c1825",
-  password: "2b08771e",
-  database: "heroku_14640958c11046a",
+  user: "bd3370874b31be",
+  password: "0ce05581",
+  database: "heroku_f3acd7345d7adac",
 });
 
 app.get("/", (req, res, next) => {
