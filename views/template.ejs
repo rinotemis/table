@@ -2,11 +2,41 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>template</title>
+    <title>template page</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   </head>
-  <body>
-    <script></script>
+  <body class="is-slide" id="page-animate">
+    <header>
+      <a href="/">RINO APPS</a>
+    </header>
+    <h2></h2>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- body code start ---------------------------------------------  >
+
+
+
+    <!  -->
+    <script>
+      // 共通部品 -------------------------------------------------------
+      $(window).on("load", function () {
+        $("body").removeClass("is-slide");
+      });
+      $(function () {
+        $('a:not([href^="#"]):not([target])').on("click", function (e) {
+          e.preventDefault(); // ページ遷移を一旦キャンセル
+          url = $(this).attr("href"); // 遷移先のURLを取得
+
+          if (url !== "") {
+            $("body").addClass("is-slide-in"); // 画面遷移前のアニメーション is-slide-in
+
+            setTimeout(function () {
+              window.location = url; // 0.7秒後に取得したURLに遷移
+            }, 10);
+          }
+          return false;
+        });
+        // 追加部品 -------------------------------------------------------
+      });
+    </script>
   </body>
 </html>
